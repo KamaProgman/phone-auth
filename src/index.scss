@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+
+  background-color: #ebecf0;
+}
+
+.container {
+  height: 100vh - 2;
+  @apply mx-auto pt-12 max-w-[420px] flex flex-col relative;
+
+  .box {
+    @apply p-4 bg-white rounded-xl text-gray-900;
+  
+    .title {
+      @apply mb-8 text-[34px] font-medium leading-9;
+    }
+
+    .text {
+      @apply text-lg font-medium leading-6 text-gray-800;
+    }
+  
+    .language-button {
+      @apply p-3 h-[120px] bg-[#ebecf0] rounded-2xl
+             flex flex-col justify-between flex-1
+             font-medium text-lg text-gray-800 border border-[#18a53c] enabled:border-none;
+    }
+
+  }
+  .continue-button {
+    @apply w-full py-4 bg-[#18a53c] text-white font-medium rounded-2xl;
+  }
+  .bottom {
+    @apply w-full absolute bottom-4 left-0;
+  }
+
+  input {
+    @apply max-w-[335px] w-full pr-2 py-4 bg-transparent text-xl font-bold outline-none;
+  }
+}
