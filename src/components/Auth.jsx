@@ -2,12 +2,66 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from "react-i18next";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { HiArrowNarrowLeft } from 'react-icons/hi'
+
+let transactions = {
+   "transactions": [
+      {
+         "id": 1,
+         "name": "Alex Smith",
+         "type": {
+            "name": "outgoing",
+            "descr": "Исходящий перевод"
+         },
+         "card": "+4928",
+         "time": "12:51",
+         "sum": "-500 000",
+         "img": "https://icons.veryicon.com/png/o/miscellaneous/linear-icon-27/arrow-up-circle-1.png"
+      },
+      {
+         "id": 2,
+         "name": "Ipak Yuli Bank",
+         "type": {
+            "name": "incoming",
+            "descr": "Мониторинг карты"
+         },
+         "card": "+4813",
+         "time": "09:23",
+         "sum": "1 500 000",
+         "img": "https://scontent.ftas2-1.fna.fbcdn.net/v/t39.30808-6/304191564_497104809088726_8920306617648384794_n.png?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=61m_AI0Xfw0AX9EoAWg&_nc_ht=scontent.ftas2-1.fna&oh=00_AfCmvHGDA6wdpX4ajvyqunfMvF9i6-YNkwOS80mjTXvC0g&oe=6446069A"
+      },
+      {
+         "id": 3,
+         "name": "Eminem",
+         "type": {
+            "name": "outgoing",
+            "descr": "Исходящий перевод"
+         },
+         "card": "+4928",
+         "time": "12:51",
+         "sum": "-2 700 000",
+         "img": "https://icons.veryicon.com/png/o/miscellaneous/linear-icon-27/arrow-up-circle-1.png"
+      },
+      {
+         "id": 4,
+         "name": "Agro Bank",
+         "type": {
+            "name": "incoming",
+            "descr": "Мониторинг карты"
+         },
+         "card": "+4813",
+         "time": "09:23",
+         "sum": "1 150 000",
+         "img": "https://scontent.ftas2-1.fna.fbcdn.net/v/t39.30808-6/304191564_497104809088726_8920306617648384794_n.png?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=61m_AI0Xfw0AX9EoAWg&_nc_ht=scontent.ftas2-1.fna&oh=00_AfCmvHGDA6wdpX4ajvyqunfMvF9i6-YNkwOS80mjTXvC0g&oe=6446069A"
+      }
+   ]
+}
 
 const Auth = () => {
    const [data, setData] = useState([]);
-   const { register, handleSubmit, formState: { errors }, reset } = useForm()
+   const { register, handleSubmit, formState: { errors }, reset } = useForm({ defaultValues: transactions })
+   const navigate = useNavigate()
    const { t } = useTranslation()
 
    useEffect(() => {
@@ -16,13 +70,17 @@ const Auth = () => {
    }, []);
 
    const onSubmit = (elem) => {
-      let found = data.find(item => item.phoneNumber == elem.phoneNumber)
-      if (typeof found != 'object') {
-         axios.post('http://localhost:3001/users', elem)
-            .then(res => {
-               if (res.status == 200 || res.status == 201) reset();
-            })
-      }
+      // let found = data.find(item => item.phoneNumber == elem.phoneNumber)
+      // if (typeof found != 'object') {
+      axios.post('http://localhost:3001/users', elem)
+         .then(res => {
+            if (res.status == 200 || res.status == 201) {
+               console.log(res.data);
+               reset()
+               navigate({ pathname: `../users/${res.data.id}/transactions` })
+            }
+         })
+      // }
    }
 
    return (
@@ -38,7 +96,6 @@ const Auth = () => {
                <div className="mb-6">
                   <p className="text">{t('isNeeded')}</p>
                </div>
-
                <div>
                   <div className="mt-10 flex bg-[#ebecf0] rounded-2xl overflow-hidden relative">
                      <div className="flex items-center px-4 gap-2 cursor-pointer">
@@ -63,7 +120,6 @@ const Auth = () => {
                      {errors?.phoneNumber?.message}
                   </p>
                </div>
-
                <div className='bottom'>
                   <button className="continue-button">{t('continue')}</button>
                </div>

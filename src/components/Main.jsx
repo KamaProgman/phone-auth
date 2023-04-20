@@ -37,11 +37,11 @@ const Main = () => {
                   </button>
                })}
             </div>
-         </div>
-         <div className="bottom">
-            <button className="continue-button"
-               onClick={goToAuth}>{t('continue')}</button>
-            <p className="mt-4 px-3 text-gray-500 leading-5 text-center">{t('accepting')}</p>
+            <div className="bottom">
+               <button className="continue-button"
+                  onClick={goToAuth}>{t('continue')}</button>
+               <p className="mt-4 px-3 text-gray-500 leading-5 text-center">{t('accepting')}</p>
+            </div>
          </div>
       </div>
    );
