@@ -23,7 +23,9 @@ i18next
                sum: 'сум',
                receive: 'Пополнение',
                spent: 'Списание',
-               card: 'Карта'
+               all: 'Все',
+               card: 'Карта',
+               transfer: 'Исходящий перевод'
             }
          },
          en: {
@@ -40,7 +42,9 @@ i18next
                sum: 'sum',
                receive: 'Received',
                spent: 'Spent',
-               card: 'Card'
+               all: 'All',
+               card: 'Card',
+               transfer: 'Outgoing transfer'
             }
          }
       }

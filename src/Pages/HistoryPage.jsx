@@ -2,13 +2,21 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import Transaction from '../components/Transaction';
 import { BiFilter } from 'react-icons/bi';
+import Transactions from "../components/Transaction";
 
 const HistoryPage = () => {
    const [data, setData] = useState([]);
    const [filter, setFilter] = useState([]);
+   const [isActive, setIsActive] = useState('all');
+   const [total, setTotal] = useState(0);
    const { t } = useTranslation()
+
+   useEffect(() => {
+      let filtered = data?.filter(item => item.type.name == 'outgoing')
+
+      setTotal(filtered?.reduce((a, b) => b.sum + a, 0))
+   }, [data]);
 
    useEffect(() => {
       axios.get('http://localhost:3001/users/1')
@@ -19,12 +27,14 @@ const HistoryPage = () => {
    }, []);
 
    const onFilter = (e) => {
+      setIsActive(e.target.dataset.action)
       setFilter(data)
       let filtered
-      if (e.target.id) {
-         filtered = data.filter(item => item.type.name == e.target.id)
+      if (e.target.dataset.action) {
+         filtered = data.filter(item => item.type.name == e.target.dataset.action)
          setFilter(filtered)
-      } else setFilter(data)
+      }
+      if (e.target.dataset.action == 'all') setFilter(data)
    }
 
    return (
@@ -34,32 +44,39 @@ const HistoryPage = () => {
             <div className="history-box">
                <div className="history-box__item">
                   <div>{t('expenses')}</div>
-                  <p>9 982 400 {t('sum')}</p>
+                  <p>{total  / 100 * 99} {t('sum')}</p>
                </div>
                <div className="history-box__item">
                   <div>{t('cashback')}</div>
-                  <p>9 982 400 {t('sum')}</p>
+                  <p>{total / 100 * 1} {t('sum')}</p>
                </div>
             </div>
          </div>
 
          <div className="transaction">
             <div className="filter-box">
-               <button onClick={(e) => onFilter(e)}><BiFilter size={24} /></button>
-               <button id="incoming" onClick={(e) => onFilter(e)}>{t('receive')}</button>
-               <button id="outgoing" onClick={(e) => onFilter(e)}>{t('spent')}</button>
+               <button
+                  data-action="all"
+                  onClick={(e) => onFilter(e)}
+                  disabled={isActive == 'all'}
+               >
+                  {t('all')}
+                  {/* <img src="https://icons.veryicon.com/png/o/leisure/crisp-app-icon-library-v3/filter-10.png" alt="filter" className="w-6" /> */}
+               </button>
+               <button
+                  data-action="incoming"
+                  onClick={(e) => onFilter(e)}
+                  disabled={isActive == 'incoming'}
+               >{t('receive')}</button>
+               <button
+                  data-action="outgoing"
+                  onClick={(e) => onFilter(e)}
+                  disabled={isActive == 'outgoing'}
+               >{t('spent')}</button>
             </div>
 
-            <div className="mt-8">
-               <h3>Сегодня</h3>
-               <div className='transaction-box' >
+            <Transactions data={filter} />
 
-                  {filter?.map((item, idx) => {
-                     return <Transaction transaction={item} key={idx} />
-                  })}
-
-               </div>
-            </div>
          </div>
       </div>
    );
