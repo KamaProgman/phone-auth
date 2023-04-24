@@ -17,7 +17,7 @@ let transactions = {
          "card": "+4928",
          "sum": 500000,
          "img": "https://icons.veryicon.com/png/o/miscellaneous/linear-icon-27/arrow-up-circle-1.png",
-         "date": "23.04.2023",
+         "date": "24.04.2023",
          "time": "10:46:22"
       },
       {
@@ -43,7 +43,7 @@ let transactions = {
          "card": "+4928",
          "sum": 2700000,
          "img": "https://icons.veryicon.com/png/o/miscellaneous/linear-icon-27/arrow-up-circle-1.png",
-         "date": "22.04.2023",
+         "date": "22.03.2023",
          "time": "12:39:13"
       },
       {
@@ -56,7 +56,7 @@ let transactions = {
          "card": "+4813",
          "sum": 1150000,
          "img": "https://scontent.ftas2-1.fna.fbcdn.net/v/t39.30808-6/304191564_497104809088726_8920306617648384794_n.png?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=61m_AI0Xfw0AX9EoAWg&_nc_ht=scontent.ftas2-1.fna&oh=00_AfCmvHGDA6wdpX4ajvyqunfMvF9i6-YNkwOS80mjTXvC0g&oe=6446069A",
-         "date": "20.04.2023",
+         "date": "20.03.2023",
          "time": "20:53:48"
       }
    ]

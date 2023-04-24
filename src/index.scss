@@ -15,7 +15,7 @@ body {
 
 .container {
   min-height: 100vh - 2.5;
-  @apply mx-auto max-w-[420px] flex flex-col relative;
+  @apply mx-auto max-w-[400px] flex flex-col relative;
 
   .box {
     @apply p-4 mt-12 bg-white rounded-xl text-gray-900;
@@ -64,12 +64,16 @@ body {
   }
 
   .transaction {
-      @apply h-[600px] mt-6 py-5 px-4 bg-white rounded-2xl;
+      @apply mt-6 py-5 px-4 bg-white rounded-2xl;
       .filter-box {
         @apply flex items-center gap-2;
         div {@apply py-1.5 px-2 bg-gray-200 rounded-2xl}
         button {
-          @apply py-1.5 px-3 bg-gray-200 rounded-[18px] font-semibold;
+          @apply py-1.5 px-3 inline-block bg-gray-200 rounded-[18px] font-semibold 
+               disabled:bg-gray-100;
+               img {
+                @apply pointer-events-none
+               }
         }
       }
       h3 {

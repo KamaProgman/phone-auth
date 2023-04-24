@@ -11,12 +11,7 @@ const HistoryPage = () => {
    const [isActive, setIsActive] = useState('all');
    const [total, setTotal] = useState(0);
    const { t } = useTranslation()
-
-   useEffect(() => {
-      let filtered = data?.filter(item => item.type.name == 'outgoing')
-
-      setTotal(filtered?.reduce((a, b) => b.sum + a, 0))
-   }, [data]);
+   const date = new Date().toLocaleDateString()
 
    useEffect(() => {
       axios.get('http://localhost:3001/users/1')
@@ -25,6 +20,12 @@ const HistoryPage = () => {
             setFilter(res.data.transactions)
          })
    }, []);
+
+   // Expenses for the last month
+   useEffect(() => {
+      let filtered = data?.filter(item => item.type.name == 'outgoing' && item.date.split('.')[1] === date.split('.')[1])
+      setTotal(filtered?.reduce((a, b) => b.sum + a, 0))
+   }, [data]);
 
    const onFilter = (e) => {
       setIsActive(e.target.dataset.action)
@@ -44,11 +45,11 @@ const HistoryPage = () => {
             <div className="history-box">
                <div className="history-box__item">
                   <div>{t('expenses')}</div>
-                  <p>{total  / 100 * 99} {t('sum')}</p>
+                  <p>{total / 100 * 99.5} {t('sum')}</p>
                </div>
                <div className="history-box__item">
                   <div>{t('cashback')}</div>
-                  <p>{total / 100 * 1} {t('sum')}</p>
+                  <p>{total / 100 * 0.5} {t('sum')}</p>
                </div>
             </div>
          </div>
@@ -60,8 +61,7 @@ const HistoryPage = () => {
                   onClick={(e) => onFilter(e)}
                   disabled={isActive == 'all'}
                >
-                  {t('all')}
-                  {/* <img src="https://icons.veryicon.com/png/o/leisure/crisp-app-icon-library-v3/filter-10.png" alt="filter" className="w-6" /> */}
+                  <img src="https://icons.veryicon.com/png/o/leisure/crisp-app-icon-library-v3/filter-10.png" alt="filter" className="w-6" />
                </button>
                <button
                   data-action="incoming"

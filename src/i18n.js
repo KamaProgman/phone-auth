@@ -25,7 +25,8 @@ i18next
                spent: 'Списание',
                all: 'Все',
                card: 'Карта',
-               transfer: 'Исходящий перевод'
+               transfer: 'Исходящий перевод',
+               today: 'Сегодня'
             }
          },
          en: {
@@ -44,7 +45,8 @@ i18next
                spent: 'Spent',
                all: 'All',
                card: 'Card',
-               transfer: 'Outgoing transfer'
+               transfer: 'Outgoing transfer',
+               today: 'Today'
             }
          }
       }
