@@ -1,19 +1,19 @@
 import { Routes, Route } from "react-router-dom";
 
-import Main from "./components/Main";
-import Auth from "./components/Auth";
-import HistoryPage from "./Pages/HistoryPage";
+import Layout from "./layout/Layout";
+import HistoryPage from "./pages/HistoryPage";
+import Pin from "./pages/Pin";
+import AuthPage from "./pages/AuthPage";
 
 function App() {
-
   return (
-    <div className="pt-6">
+    <Layout>
       <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/authorization" element={<Auth />} />
+        <Route path="/authorization" element={<AuthPage />} />
+        <Route path="/pin" element={<Pin />} />
         <Route path="/users/:id/transactions" element={<HistoryPage />} />
       </Routes>
-    </div>
+    </Layout>
   );
 }
 

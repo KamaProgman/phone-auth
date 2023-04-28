@@ -5,7 +5,6 @@ const Transaction_Item = ({ transaction }) => {
    const { t } = useTranslation()
    const time = transaction.time.split(':')
 
-   // console.log(transaction.date);
 
    return (
       <div className='transaction-item'>

@@ -7,16 +7,17 @@ let lngs = {
    en: { nativeName: 'English', img: 'https://cdn4.iconfinder.com/data/icons/world-flags-rounded/900/united_states_usa_america_american_flag_country-256.png' }
 }
 
-const Main = () => {
+const Language = ({isActive, setIsActive}) => {
    const navigate = useNavigate()
    const { t, i18n } = useTranslation()
 
    const goToAuth = () => {
+      setIsActive(!isActive)
       navigate({ pathname: '/authorization' })
    }
 
    return (
-      <div className="container">
+      <div className="container pt-6">
          <div className="box">
             <h1 className="title">{t('welcome')}</h1>
             <div className="mb-6">
@@ -47,4 +48,4 @@ const Main = () => {
    );
 }
 
-export default Main;
+export default Language;

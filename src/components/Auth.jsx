@@ -17,7 +17,7 @@ let transactions = {
          "card": "+4928",
          "sum": 500000,
          "img": "https://icons.veryicon.com/png/o/miscellaneous/linear-icon-27/arrow-up-circle-1.png",
-         "date": "24.04.2023",
+         "date": "27.04.2023",
          "time": "10:46:22"
       },
       {
@@ -29,7 +29,7 @@ let transactions = {
          },
          "card": "+4813",
          "sum": 1500000,
-         "img": "https://scontent.ftas2-1.fna.fbcdn.net/v/t39.30808-6/304191564_497104809088726_8920306617648384794_n.png?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=61m_AI0Xfw0AX9EoAWg&_nc_ht=scontent.ftas2-1.fna&oh=00_AfCmvHGDA6wdpX4ajvyqunfMvF9i6-YNkwOS80mjTXvC0g&oe=6446069A",
+         "img": "https://uzoplata.com/wp-content/uploads/2020/10/humocard1.png",
          "date": "22.04.2023",
          "time": "16:21:02"
       },
@@ -55,14 +55,14 @@ let transactions = {
          },
          "card": "+4813",
          "sum": 1150000,
-         "img": "https://scontent.ftas2-1.fna.fbcdn.net/v/t39.30808-6/304191564_497104809088726_8920306617648384794_n.png?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=61m_AI0Xfw0AX9EoAWg&_nc_ht=scontent.ftas2-1.fna&oh=00_AfCmvHGDA6wdpX4ajvyqunfMvF9i6-YNkwOS80mjTXvC0g&oe=6446069A",
+         "img": "https://uzoplata.com/wp-content/uploads/2020/10/humocard1.png",
          "date": "20.03.2023",
          "time": "20:53:48"
       }
    ]
 }
 
-const Auth = () => {
+const Auth = ({ isActive, setIsActive }) => {
    const [data, setData] = useState([]);
    const { register, handleSubmit, formState: { errors }, reset } = useForm({ defaultValues: transactions })
    const navigate = useNavigate()
@@ -76,23 +76,25 @@ const Auth = () => {
    const onSubmit = (elem) => {
       // let found = data.find(item => item.phoneNumber == elem.phoneNumber)
       // if (typeof found != 'object') {
-      axios.post('http://localhost:3001/users', elem)
+      let token = Math.random().toString(36).substring('2')
+      axios.post('http://localhost:3001/users', { ...elem, token: token, pin: '1234' })
          .then(res => {
             if (res.status == 200 || res.status == 201) {
-               console.log(res.data);
-               reset()
-               navigate({ pathname: `../users/${res.data.id}/transactions` })
+               window.localStorage.setItem("token", token);
+
+               navigate(`../users/${res.data.id}/transactions`, { state: res.data })
+               window.location.reload()
             }
          })
       // }
    }
 
    return (
-      <div className="container">
+      <div className="container pt-6">
          <div>
-            <Link to='/' className='mb-4 absolute top-0 left-0'>
+            <button onClick={() => setIsActive(!isActive)} className='mb-4 mt-6 absolute top-0 left-4'>
                <HiArrowNarrowLeft size={30} color='gray' />
-            </Link>
+            </button>
          </div>
          <div className="box">
             <form onSubmit={handleSubmit(onSubmit)}>

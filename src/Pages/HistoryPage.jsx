@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { BiFilter } from 'react-icons/bi';
 import Transactions from "../components/Transaction";
 
 const HistoryPage = () => {
