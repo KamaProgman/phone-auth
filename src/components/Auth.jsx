@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from "react-i18next";
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { HiArrowNarrowLeft } from 'react-icons/hi'
 
 let transactions = {
@@ -17,7 +17,7 @@ let transactions = {
          "card": "+4928",
          "sum": 500000,
          "img": "https://icons.veryicon.com/png/o/miscellaneous/linear-icon-27/arrow-up-circle-1.png",
-         "date": "27.04.2023",
+         "date": "01.05.2023",
          "time": "10:46:22"
       },
       {

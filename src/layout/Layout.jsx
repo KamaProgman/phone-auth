@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import pinContext from "../contexts/pinContext";
 
-import Pin from "../pages/Pin";
+import Pin from "../pages/PinPage";
 import AuthPage from "../pages/AuthPage";
 
 const Layout = ({ children }) => {

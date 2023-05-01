@@ -26,7 +26,10 @@ i18next
                all: 'Все',
                card: 'Карта',
                transfer: 'Исходящий перевод',
-               today: 'Сегодня'
+               today: 'Сегодня',
+               pin: 'Введите PIN-код',
+               yourNumber: 'Номер вашего телефона',
+               lostNumber: 'Забыли код?'
             }
          },
          en: {
@@ -46,7 +49,10 @@ i18next
                all: 'All',
                card: 'Card',
                transfer: 'Outgoing transfer',
-               today: 'Today'
+               today: 'Today',
+               pin: 'Enter your PIN',
+               yourNumber: 'Your phone number',
+               lostNumber: 'Do not remember PIN?'
             }
          }
       }

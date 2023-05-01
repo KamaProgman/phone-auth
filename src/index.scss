@@ -112,7 +112,7 @@ body {
          input,buttons {
           @apply w-full h-full cursor-pointer
         }
-        a{
+        button{
           @apply text-base font-medium text-center text-gray-400 leading-5;
         } 
         &.active {

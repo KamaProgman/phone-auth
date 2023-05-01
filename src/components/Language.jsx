@@ -1,5 +1,3 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useTranslation, Trans } from "react-i18next";
 
 let lngs = {
@@ -7,13 +5,11 @@ let lngs = {
    en: { nativeName: 'English', img: 'https://cdn4.iconfinder.com/data/icons/world-flags-rounded/900/united_states_usa_america_american_flag_country-256.png' }
 }
 
-const Language = ({isActive, setIsActive}) => {
-   const navigate = useNavigate()
+const Language = ({ isActive, setIsActive }) => {
    const { t, i18n } = useTranslation()
 
    const goToAuth = () => {
       setIsActive(!isActive)
-      navigate({ pathname: '/authorization' })
    }
 
    return (
