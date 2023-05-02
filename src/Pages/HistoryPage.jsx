@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import Transactions from "../components/Transaction";
+import { useLocation } from "react-router-dom";
 
 const HistoryPage = () => {
    const [data, setData] = useState([]);
@@ -11,9 +12,10 @@ const HistoryPage = () => {
    const [total, setTotal] = useState(0);
    const { t } = useTranslation()
    const date = new Date().toLocaleDateString()
+   const { state } = useLocation()
 
    useEffect(() => {
-      axios.get('http://localhost:3001/users/1')
+      axios.get(state.url)
          .then(res => {
             setData(res.data.transactions)
             setFilter(res.data.transactions)

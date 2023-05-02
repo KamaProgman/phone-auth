@@ -15,7 +15,9 @@ const Pin = () => {
          localStorage.setItem('pinBool', true)
       }
       if (pin.length == 4) {
-         setPin('')
+         setTimeout(() => {
+            setPin('')
+         }, 100);
       }
    }, [pin]);
 
@@ -30,7 +32,7 @@ const Pin = () => {
    }
 
    return (
-      <div className="container ">
+      <div className="container">
          <div className="pin">
             <div>
                <h2 className="text-3xl font-bold mb-10 text-slate-900">{t('pin')}</h2>

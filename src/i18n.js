@@ -29,7 +29,8 @@ i18next
                today: 'Сегодня',
                pin: 'Введите PIN-код',
                yourNumber: 'Номер вашего телефона',
-               lostNumber: 'Забыли код?'
+               lostNumber: 'Забыли код?',
+               transfer: 'Перевод денег'
             }
          },
          en: {
@@ -52,7 +53,8 @@ i18next
                today: 'Today',
                pin: 'Enter your PIN',
                yourNumber: 'Your phone number',
-               lostNumber: 'Do not remember PIN?'
+               lostNumber: 'Do not remember PIN?',
+               transfer: 'Money transfer'
             }
          }
       }

@@ -5,7 +5,6 @@ const Transaction_Item = ({ transaction }) => {
    const { t } = useTranslation()
    const time = transaction.time.split(':')
 
-
    return (
       <div className='transaction-item'>
          <div className='flex items-center'>
@@ -39,7 +38,7 @@ const Transactions = ({ data }) => {
 
    useEffect(() => {
       let dateElems = []
-      data.map((item, idx) => {
+      data.map((item) => {
          dateElems.push({ date: item.date, arr: [...data] })
       })
       setDates(dateElems)

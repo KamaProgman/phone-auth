@@ -62,14 +62,16 @@ let transactions = {
    ]
 }
 
+let url = 'http://localhost:3001'
+
 const Auth = ({ isActive, setIsActive }) => {
    const [data, setData] = useState([]);
-   const { register, handleSubmit, formState: { errors }, reset } = useForm({ defaultValues: transactions })
+   const { register, handleSubmit, formState: { errors } } = useForm({ defaultValues: transactions })
    const navigate = useNavigate()
    const { t } = useTranslation()
 
    useEffect(() => {
-      axios.get('http://localhost:3001/users')
+      axios.get(`${url}/users`)
          .then(res => setData(res.data))
    }, []);
 
@@ -77,12 +79,11 @@ const Auth = ({ isActive, setIsActive }) => {
       // let found = data.find(item => item.phoneNumber == elem.phoneNumber)
       // if (typeof found != 'object') {
       let token = Math.random().toString(36).substring('2')
-      axios.post('http://localhost:3001/users', { ...elem, token: token, pin: '1234' })
+      axios.post(`${url}/users`, { ...elem, token: token, pin: '1234' })
          .then(res => {
             if (res.status == 200 || res.status == 201) {
                window.localStorage.setItem("token", token);
-
-               navigate(`../users/${res.data.id}/transactions`, { state: res.data })
+               navigate(`/`, { state: { ...res.data, url: url + '/users/' + res.data.id } })
                window.location.reload()
             }
          })
