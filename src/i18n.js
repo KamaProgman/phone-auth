@@ -30,7 +30,11 @@ i18next
                pin: 'Введите PIN-код',
                yourNumber: 'Номер вашего телефона',
                lostNumber: 'Забыли код?',
-               transfer: 'Перевод денег'
+               transfer: 'Перевод денег',
+               from: 'Откуда',
+               to: 'Куда',
+               yourTransfer: 'Вы переводите',
+               commission: 'Комиссия'
             }
          },
          en: {
@@ -54,7 +58,11 @@ i18next
                pin: 'Enter your PIN',
                yourNumber: 'Your phone number',
                lostNumber: 'Do not remember PIN?',
-               transfer: 'Money transfer'
+               transfer: 'Money transfer',
+               from: 'From',
+               to: 'To',
+               yourTransfer: 'You are transfering',
+               commission: 'Commission'
             }
          }
       }

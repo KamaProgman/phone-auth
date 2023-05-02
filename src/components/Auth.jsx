@@ -98,7 +98,7 @@ const Auth = ({ isActive, setIsActive }) => {
             </button>
          </div>
          <div className="box">
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form>
                <h2 className="title">{t('enterNumber')}</h2>
                <div className="mb-6">
                   <p className="text">{t('isNeeded')}</p>
@@ -128,7 +128,7 @@ const Auth = ({ isActive, setIsActive }) => {
                   </p>
                </div>
                <div className='bottom'>
-                  <button className="continue-button">{t('continue')}</button>
+                  <button onClick={handleSubmit(onSubmit)} className="continue-button">{t('continue')}</button>
                </div>
             </form>
          </div>
