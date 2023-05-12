@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
@@ -26,7 +25,7 @@ const TransferPage = () => {
             </button>
             <h2 className='text-[28px] text-gray-800 font-bold leading-9'>{t('transfer')}</h2>
          </div>
-         <div className="box">
+         <div className="box mt-14">
             <div>
                <div>
                   <h3 className='text-lg font-semibold'>{t('from')}</h3>

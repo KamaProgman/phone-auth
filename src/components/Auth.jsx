@@ -97,7 +97,7 @@ const Auth = ({ isActive, setIsActive }) => {
                <HiArrowNarrowLeft size={30} color='gray' />
             </button>
          </div>
-         <div className="box">
+         <div className="box mt-14">
             <form>
                <h2 className="title">{t('enterNumber')}</h2>
                <div className="mb-6">

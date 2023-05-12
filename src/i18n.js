@@ -34,7 +34,8 @@ i18next
                from: 'Откуда',
                to: 'Куда',
                yourTransfer: 'Вы переводите',
-               commission: 'Комиссия'
+               commission: 'Комиссия',
+               profile: 'Профиль'
             }
          },
          en: {
@@ -62,7 +63,8 @@ i18next
                from: 'From',
                to: 'To',
                yourTransfer: 'You are transfering',
-               commission: 'Commission'
+               commission: 'Commission',
+               profile: 'Profile'
             }
          }
       }

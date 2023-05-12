@@ -14,7 +14,7 @@ const Language = ({ isActive, setIsActive }) => {
 
    return (
       <div className="container pt-6">
-         <div className="box">
+         <div className="box mt-14">
             <h1 className="title">{t('welcome')}</h1>
             <div className="mb-6">
                <p className="text">Выберите язык приложения</p>
